@@ -2,7 +2,8 @@ class TodosController < ApplicationController
   after_filter :cors_set_access_control_headers
 
   def index
-    @todos = Todo.all
+    @todos = User.find(session[:user_id]).todos.all
+    # @todos = Todo.all
     render json: @todos
   end
 
